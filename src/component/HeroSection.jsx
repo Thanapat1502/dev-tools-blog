@@ -54,7 +54,7 @@ function IntroArticle() {
 
 function HeroSection() {
   return (
-    <main className="pt-10 pb-10 pr-4 pl-4 flex flex-col gap-16 lg:flex-row justify-center items-center bg-[#f9f8f6]">
+    <main className="pt-10 pb-10 pr-4 pl-4 flex flex-col gap-16 lg:flex-row justify-center items-center bg-[#F9F8F6]">
       <Slogan />
       <ImageContainer />
       <IntroArticle />
