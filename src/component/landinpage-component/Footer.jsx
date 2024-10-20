@@ -2,7 +2,7 @@ import {
   LinkedinIcon,
   GitHubIcon,
   InstragramIcon,
-} from "./icon/SocialIconCollecntion";
+} from "../icon/SocialIconCollecntion";
 
 export default function Footer() {
   return (

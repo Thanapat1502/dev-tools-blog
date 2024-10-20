@@ -1,4 +1,4 @@
-import SearchIcon from "./icon/SeachIcon";
+import SearchIcon from "../icon/SeachIcon";
 
 function SearchArticle() {
   return (
