@@ -4,7 +4,7 @@ function SearchArticle() {
   return (
     <nav className="felx flex-col gap-4 p-4 bg-[#F9F8F6]">
       <h3 className="font-semibold text-xl mb-4">Lastest article</h3>
-
+      
       <div
         className="search-section-main rounded-2xl flex flex-col gap-4 w-full p-4 bg-[#EFEEEB] 
       lg:flex-row-reverse lg:justify-between">
