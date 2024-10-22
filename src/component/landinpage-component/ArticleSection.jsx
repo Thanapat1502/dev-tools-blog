@@ -46,7 +46,7 @@ function BlogCard() {
 
 function ArticleSection() {
   return (
-    <article className="article-area">
+    <article className="article-area  max-w-7xl mx-auto">
       <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
         <BlogCard />
       </div>
