@@ -1,4 +1,5 @@
 import { blogPosts } from "../../data/blogPosts";
+
 function BlogCard() {
   return (
     <>
@@ -6,30 +7,25 @@ function BlogCard() {
         return (
           <div
             key={index}
-            className="card-container flex flex-col justify-center w-96 px-2 py-2">
+            className="card-container flex flex-col justify-center w-96 h-[27rem] mt-1 mb-1 px-2 py-2 lg:w-[37rem] lg:h-[36rem]">
             <img
-              key={index}
               src={item.image}
               alt={item.title}
-              className="rounded-2xl"
+              className="rounded-2xl w-80 h-52 object-cover lg:w-[37rem] lg:h-96"
             />
-            <div
-              key={index}
-              className="category rounded-full bg-[#D7F2E9] text-[#12B279] font-medium text-sm text-center px-3 py-1 w-fit mt-4 mb-2">
+            <div className="category rounded-full bg-[#D7F2E9] text-[#12B279] font-medium text-sm text-center px-3 py-1 w-fit mt-4 mb-2">
               {item.category}
             </div>
-            <h4
-              key={index}
-              className="title font-semibold text-xl text-[#26231E]">
-              {item.title}
-            </h4>
-            <p
-              key={index}
-              className="description font-medium text-sm text-[#75716B] mt-2">
-              {item.description}
-            </p>
-            <div className="author-and-date flex felx-row justify-between mt-4 mb-4">
-              <div key={index} className="author flex gap-1">
+            <div className="text-area w-80 h-36 flex flex-col gap-2 lg:w-[37rem]">
+              <h4 className="title font-semibold text-xl text-[#26231E]">
+                {item.title}
+              </h4>
+              <p className="description font-medium text-sm text-[#75716B]">
+                {item.description}
+              </p>
+            </div>
+            <div className="author-and-date flex flex-row gap-8 mt-4 mb-4 ">
+              <div className="author flex gap-1">
                 <img
                   src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
                   alt="author-picture"
@@ -50,8 +46,10 @@ function BlogCard() {
 
 function ArticleSection() {
   return (
-    <article className="grid-area flex flex-col justify-center items-center lg:grid lg:grid-cols-2 ">
-      <BlogCard />
+    <article className="article-area">
+      <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
+        <BlogCard />
+      </div>
     </article>
   );
 }
