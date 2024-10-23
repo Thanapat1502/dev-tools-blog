@@ -51,6 +51,7 @@ function DropDown() {
 
 function CategoryButton() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
+
   return (
     <>
       <DropDown />
@@ -59,7 +60,7 @@ function CategoryButton() {
           return (
             <button
               key={index}
-              className="font-medium text-base rounded-lg hover:bg-[#DAD6D1] px-5 py-3">
+              className={`font-medium text-base rounded-lg hover:bg-[#DAD6D1] active:bg-[#F9F8F6] px-5 py-3`}>
               {item}
             </button>
           );
