@@ -1,4 +1,11 @@
 import SearchIcon from "../icon/SeachIcon";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function SeachBar() {
   return (
@@ -24,18 +31,20 @@ function DropDown() {
       <label htmlFor="category" className="lg:hidden mb-2">
         Category
       </label>
-      <select
-        name="category"
-        id="category"
-        className="w-full h-12 rounded-lg border">
-        {categories.map((item, index) => {
-          return (
-            <option key={index} value={item.toLowerCase()}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
+      <Select>
+        <SelectTrigger className="w-full h-12 rounded-lg border">
+          <SelectValue placeholder="Categories" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.map((item, index) => {
+            return (
+              <SelectItem key={index} value={item.toLowerCase()}>
+                {item}
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
     </div>
   );
 }
