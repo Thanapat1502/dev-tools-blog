@@ -1,17 +1,24 @@
 import SearchIcon from "../icon/SeachIcon";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function SeachBar() {
   return (
     <>
-      <div className="search-bar-container relative w-full h-12">
+      <div className="search-bar-container relative w-full h-12 lg:w-1/3 top-3">
         <input
           type="text"
           placeholder="Search"
-          className="border rounded-lg py-3 px-4 w-full lg:w-1/3"
+          className="border rounded-lg py-3 px-4 w-full"
         />
-        <span className="absolute right-3 top-4 lg:top-5 cursor-pointer">
+        <button className="absolute right-3 top-4 cursor-pointer">
           <SearchIcon />
-        </span>
+        </button>
       </div>
     </>
   );
@@ -24,18 +31,20 @@ function DropDown() {
       <label htmlFor="category" className="lg:hidden mb-2">
         Category
       </label>
-      <select
-        name="category"
-        id="category"
-        className="w-full h-12 rounded-lg border">
-        {categories.map((item, index) => {
-          return (
-            <option key={index} value={item.toLowerCase()}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
+      <Select>
+        <SelectTrigger className="w-full h-12 rounded-lg border">
+          <SelectValue placeholder="Categories" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.map((item, index) => {
+            return (
+              <SelectItem key={index} value={item.toLowerCase()}>
+                {item}
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
     </div>
   );
 }
@@ -43,23 +52,26 @@ function DropDown() {
 function CategoryButton() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
-    <div className="category-dropdown-main rounded-lg py-3 px-4 relative hidden lg:flex lg:items-center">
-      {categories.map((item, index) => {
-        return (
-          <button
-            key={index}
-            className="font-medium text-base rounded-lg hover:bg-[#DAD6D1] px-5 py-3">
-            {item}
-          </button>
-        );
-      })}
-    </div>
+    <>
+      <DropDown />
+      <div className="category-dropdown-main rounded-lg py-3 px-4 relative hidden lg:flex lg:items-center">
+        {categories.map((item, index) => {
+          return (
+            <button
+              key={index}
+              className="font-medium text-base rounded-lg hover:bg-[#DAD6D1] px-5 py-3">
+              {item}
+            </button>
+          );
+        })}
+      </div>
+    </>
   );
 }
 
 function SearchArticle() {
   return (
-    <nav className="felx flex-col gap-4 p-4 bg-[#F9F8F6]">
+    <nav className="flex flex-col gap-4 p-4 bg-[#F9F8F6]">
       <h3 className="font-semibold text-xl mb-4">Lastest article</h3>
 
       <div
@@ -67,7 +79,6 @@ function SearchArticle() {
       lg:flex-row-reverse lg:justify-between">
         <SeachBar />
         <CategoryButton />
-        <DropDown />
       </div>
     </nav>
   );
