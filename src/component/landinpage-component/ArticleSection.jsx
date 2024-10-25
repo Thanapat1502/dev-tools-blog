@@ -1,9 +1,35 @@
+import { data } from "autoprefixer";
 import { blogPosts } from "../../data/blogPosts";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function BlogCard() {
+  /**
+   * effect ดึงข้อมูลจาก url มายัด state
+   * state เรียก state ที่เก็บอารเย์ไว้ออกมา
+   */
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    //ทุกครั้งที่ refresh จะเรียก getAllpost
+    getAllpost();
+  }, []);
+
+  async function getAllpost() {
+    //รับ url แล้ว setBlogs เลย
+    try {
+      const data =
+        await axios.get(`https://blog-post-project-api.vercel.app/posts
+`);
+      setBlogs(data.data.posts);
+      console.log(blogs);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
-      {blogPosts.map((item, index) => {
+      {blogs.map((item, index) => {
         return (
           <div
             key={index}

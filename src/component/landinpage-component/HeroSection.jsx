@@ -1,7 +1,7 @@
 function Slogan() {
   return (
     <>
-      <div className=" flex flex-col lg:w-1/3 ">
+      <div className="flex flex-col lg:w-1/3 ">
         <h2 className="font-semibold text-4xl text-center lg:text-end pb-2 ">
           Stay <br className="hidden lg:block" />
           Informed, <br />
