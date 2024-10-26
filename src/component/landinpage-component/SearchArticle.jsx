@@ -11,9 +11,17 @@ import ArticleArea from "./ArticleArea";
 
 function SearchArticle() {
   const categoryOptions = ["Highlight", "Cat", "Inspiration", "General"];
+  const [searchInput, setSearchInput] = useState("");
+  const [searchKeyword, setKeyword] = useState("");
   const [catagory, setCategory] = useState("highlight");
   //เมื่อกดปุ่ม จะเปลี่ยน state เป็น ชื่อของปุ่ม
   //ส่ง state ไป ArticleArea category = ...
+  const handleSearchInput = (event) => {
+    setSearchInput(event.target.value);
+  };
+  const handleSearchButton = () => {
+    setKeyword(searchInput);
+  };
 
   const handleSelected = (event) => {
     setCategory(event.target.value.toLowerCase());
@@ -32,9 +40,12 @@ function SearchArticle() {
             <input
               type="text"
               placeholder="Search"
+              onChange={handleSearchInput}
               className="border rounded-lg py-3 px-4 w-full"
             />
-            <button className="absolute right-3 top-4 cursor-pointer">
+            <button
+              className="absolute right-3 top-4 cursor-pointer"
+              onClick={handleSearchButton}>
               <SearchIcon />
             </button>
           </div>
@@ -51,8 +62,6 @@ function SearchArticle() {
                 {categoryOptions.map((item, index) => {
                   return (
                     <SelectItem key={index} value={item.toLowerCase()}>
-                      {" "}
-                      {/** รอแก้ */}
                       {item}
                     </SelectItem>
                   );
@@ -76,7 +85,7 @@ function SearchArticle() {
           </div>
         </div>
       </nav>
-      <ArticleArea category={catagory} />
+      <ArticleArea category={catagory} keyword={searchKeyword} />
     </>
   );
 }
