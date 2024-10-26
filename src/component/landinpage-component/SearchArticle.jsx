@@ -23,9 +23,12 @@ function SearchArticle() {
     setKeyword(searchInput);
   };
 
-  const handleSelected = (event) => {
+  const handleCategoryButton = (event) => {
     setCategory(event.target.value.toLowerCase());
     console.log(catagory);
+  };
+  const handleSelector = (event) => {
+    setCategory(event);
   };
 
   return (
@@ -54,7 +57,7 @@ function SearchArticle() {
             <label htmlFor="category" className="lg:hidden mb-2">
               Category
             </label>
-            <Select>
+            <Select onValueChange={handleSelector}>
               <SelectTrigger className="w-full h-12 rounded-lg border">
                 <SelectValue placeholder="Categories" />
               </SelectTrigger>
@@ -75,7 +78,7 @@ function SearchArticle() {
               return (
                 <button
                   key={index}
-                  onClick={handleSelected}
+                  onClick={handleCategoryButton}
                   value={item}
                   className={`font-medium text-base rounded-lg hover:bg-[#DAD6D1] active:bg-[#F9F8F6] px-5 py-3`}>
                   {item}
