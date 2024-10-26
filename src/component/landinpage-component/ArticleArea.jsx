@@ -8,27 +8,44 @@ export default function ArticleArea(props) {
    * state เรียก state ที่เก็บอารเย์ไว้ออกมา
    */
   const [blogs, setBlogs] = useState([]);
-
+  const [postLimit, setPostlimit] = useState(6);
+  const handleViewMore = () => {
+    setPostlimit(postLimit + 6);
+    console.log(postLimit);
+  };
   useEffect(() => {
     //ทุกครั้งที่ refresh จะเรียก getAllpost
     getAllpost();
-  }, []);
+  }, [props, postLimit]);
 
   async function getAllpost() {
     //รับ url แล้ว setBlogs เลย
-    try {
-      const data = await axios.get(
-        `https://blog-post-project-api.vercel.app/posts`
-      );
-      setBlogs(data.data.posts);
-    } catch (error) {
-      console.log(error);
+    if (props.category !== "highlight" && props.category !== "") {
+      try {
+        const data = await axios.get(
+          `https://blog-post-project-api.vercel.app/posts?category=${props.category}&limit=${postLimit}`
+        );
+        setBlogs(data.data.posts);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const data = await axios.get(
+          `https://blog-post-project-api.vercel.app/posts?&limit=${postLimit}`
+        );
+        setBlogs(data.data.posts);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
   return (
     <>
-      <article className="article-area  max-w-7xl mx-auto">
+      <article className="article-area pb-32 max-w-7xl mx-auto flex flex-col justify-center items-center">
         <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
           {blogs.map((item, index) => {
             return (
@@ -61,13 +78,22 @@ export default function ArticleArea(props) {
                     {item.author}
                   </div>
                   <div key={index} className="date">
-                    {item.date}
+                    {new Date(item.date).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
+        <button
+          className="underline font-medium text-base"
+          onClick={handleViewMore}>
+          View more
+        </button>
       </article>
     </>
   );
