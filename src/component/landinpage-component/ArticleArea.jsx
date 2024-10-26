@@ -1,6 +1,12 @@
 import { data } from "autoprefixer";
+import ReactLoading from "react-loading";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+/**สร้าง State isLoading ขึ้นมาเพื่อบอกสถานะการ Request ข้อมูล ว่าตอนนี้หน้าเว็บไซต์กำลังโหลดข้อมูลจาก Server อยู่หรือไม่ เพื่อนำมา Render ข้อความ "Loading..." 
+ * ค่าเริ่มต้นของ State นี้ จะเป็น false
+State Loading จะเป็น true ก่อนที่จะสร้าง Request (ก่อนที่จะ Execute axios) และจะกลับมาเป็น false เมื่อ Request สำเร็จ
+ */
 
 export default function ArticleArea(props) {
   /**
@@ -9,34 +15,46 @@ export default function ArticleArea(props) {
    */
   const [blogs, setBlogs] = useState([]);
   const [postLimit, setPostlimit] = useState(6);
-  const handleViewMore = () => {
-    setPostlimit(postLimit + 6);
-    console.log(postLimit);
-  };
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     //ทุกครั้งที่ refresh จะเรียก getAllpost
     getAllpost();
   }, [props, postLimit]);
 
+  //สำหรับปุ่ม viewmore
+  const handleViewMore = () => {
+    setPostlimit(postLimit + 6);
+    console.log(postLimit);
+  };
+  //สำหรับ isLoading
+  const toggleLoading = (onOff) => {
+    setIsLoading(onOff);
+  };
+
   async function getAllpost() {
     //รับ url แล้ว setBlogs เลย
     if (props.category !== "highlight" && props.category !== "") {
       try {
+        toggleLoading(true);
+        console.log("start: " + isLoading);
+
         const data = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?category=${props.category}&limit=${postLimit}`
         );
         setBlogs(data.data.posts);
-        console.log(data);
+        toggleLoading(false);
+        console.log("end: " + isLoading);
       } catch (error) {
         console.log(error);
       }
     } else {
       try {
+        toggleLoading(true);
         const data = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?&limit=${postLimit}`
         );
         setBlogs(data.data.posts);
-        console.log(data);
+        toggleLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -45,7 +63,13 @@ export default function ArticleArea(props) {
 
   return (
     <>
-      <article className="article-area pb-32 max-w-7xl mx-auto flex flex-col justify-center items-center">
+      <article className="article-area pb-32 max-w-7xl mx-auto flex flex-col justify-center items-center p-1 mt-2">
+        {isLoading ? (
+          <div className="loading-screen flex flex-col justify-center items-center">
+            <ReactLoading type="spokes" color="#000000" />
+            <h1>Loading...</h1>
+          </div>
+        ) : null}
         <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
           {blogs.map((item, index) => {
             return (
