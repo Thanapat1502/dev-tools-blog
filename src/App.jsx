@@ -2,19 +2,20 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import "./App.css";
-import HeroSection from "./component/landinpage-component/HeroSection";
-import Navebar from "./component/landinpage-component/Navebar";
-import SearchArticle from "./component/landinpage-component/SearchArticle";
-import Footer from "./component/landinpage-component/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pagese/Home";
+import SignIn from "./Pagese/SignIn";
+import ArticlePage from "./Pagese/ArticlePage";
 
 function App() {
   return (
-    <>
-      <Navebar />
-      <HeroSection />
-      <SearchArticle />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<SignIn />} />
+        <Route path="/post/" element={<ArticlePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

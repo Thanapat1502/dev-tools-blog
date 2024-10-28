@@ -19,6 +19,7 @@ function SearchArticle() {
   const handleSearchInput = (event) => {
     setSearchInput(event.target.value);
   };
+  
   const handleSearchButton = () => {
     setKeyword(searchInput);
   };
@@ -27,6 +28,7 @@ function SearchArticle() {
     setCategory(event.target.value.toLowerCase());
     console.log(catagory);
   };
+
   const handleSelector = (event) => {
     setCategory(event);
   };
