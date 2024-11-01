@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<SignIn />} />
-        <Route path="/post/" element={<ArticlePage />} />
+        <Route path="/post/:postId" element={<ArticlePage />} />
       </Routes>
     </BrowserRouter>
   );

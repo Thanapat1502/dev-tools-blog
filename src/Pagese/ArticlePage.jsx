@@ -1,67 +1,53 @@
-import { blogPosts } from "@/data/blogPosts";
+// import { blogPosts } from "@/data/blogPosts";
 import Navebar from "@/component/landinpage-component/Navebar";
 import CommentSection from "@/component/article-component/CommentSection";
 import Footer from "@/component/landinpage-component/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 export default function ArticlePage() {
-  const [post, setPost] = useState([]);
-  // const {postId} = useParams()
-  // useEffect(()=>{}, [postId])
-  // >>>>> const fetchData = () => {
-  //   try {
-  //     const data = axios.get(`https://blog-post-project-api.vercel.app/posts`);
-  //     console.log(data.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const [eachPost, setEachPost] = useState({});
+  const { postId } = useParams();
+  const fetchData = async () => {
+    try {
+      const data = await axios.get(
+        `https://blog-post-project-api.vercel.app/posts/${postId}`
+      );
+      console.log(data.data);
+      setEachPost(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, [postId]);
 
   return (
     <>
       <Navebar />
       <main className="main-container flex flex-col justify-center items-center mb-10">
-        <img
-          src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449771/my-blog-post/e739huvlalbfz9eynysc.jpg"
-          alt=""
-        />
+        <h1>id: {postId}</h1>
+        <img src={eachPost.image} alt="" />
 
         <div className="article-container  flex flex-col justify-center items-start mx-4">
           <div className="title-container flex flex-col gap-7 my-6">
             <div className="category-date-row flex flex-row gap-7">
               <div className="category text-[#12B279] py-1 px-3 rounded-full bg-[#D7F2E9]">
-                General
+                {eachPost.category}
               </div>
               <div className="date-time font-medium text-base text-[#75716B] py-1 px-3 ">
-                11 September 2024
+                {eachPost.date}
               </div>
             </div>
-            <h3 className="title font-semibold text-2xl">
-              The Art of Mindfulness: Finding Peace in a Busy World
-            </h3>
+            <h3 className="title font-semibold text-2xl">{eachPost.title}</h3>
           </div>
 
-          <p className="article">
-            "## 1. Understanding Mindfulness\n\nMindfulness is the practice of
-            being fully present and engaged in the moment, aware of your
-            thoughts and feelings without distraction or judgment.\n\n## 2.
-            Benefits of Mindfulness\n\nRegular mindfulness practice can reduce
-            stress, improve focus, enhance emotional regulation, and boost
-            overall well-being.\n\n## 3. Simple Mindfulness Techniques\n\nLearn
-            easy-to-implement mindfulness exercises, from deep breathing to body
-            scans, that you can incorporate into your daily routine.\n\n## 4.
-            Mindfulness in Daily Life\n\nDiscover how to bring mindfulness into
-            everyday activities, from eating to working, to create a more
-            balanced and fulfilling life.\n\n## 5. Overcoming
-            Challenges\n\nAddress common obstacles to mindfulness practice and
-            learn strategies to maintain consistency in your mindfulness
-            journey.",
-          </p>
+          <div className="markdown">
+            <ReactMarkdown>{eachPost.content}</ReactMarkdown>
+          </div>
         </div>
 
         <div className="author-section bg-[#EFEEEB] flex flex-col mt-6 mx-4 rounded-2xl p-6 gap-3">
@@ -70,19 +56,17 @@ export default function ArticlePage() {
             <div className="author-name">
               <h3 className="text-[#75716B] font-medium text-xs">Author</h3>
               <h2 className="text-[#43403B] font-semibold text-xl">
-                Thompson P.
+                {eachPost.author}
               </h2>
             </div>
           </div>
           <hr />
           <p className="text-[#75716B] font-medium text-base">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Dignissimos consequatur laborum blanditiis vel corporis veniam
-            fugit. Blanditiis minus quibusdam provident at. Quasi esse
-            doloremque maiores voluptate praesentium animi nisi qui.
+            {eachPost.description}
           </p>
         </div>
       </main>
+      <CommentSection likeCount={eachPost.like} />
       <Footer />
     </>
   );
