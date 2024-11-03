@@ -7,7 +7,6 @@ export default function LoginPage() {
   };
   return (
     <>
-      <h1>LOGIN</h1>
       <Navebar />
       <main>
         <div className="Login-body flex flex-col justify-center items-center gap-6 rounded-2xl bg-[#EFEEEB] py-10 px-4 mx-3 h-5/6 mt-10 mb-20">
