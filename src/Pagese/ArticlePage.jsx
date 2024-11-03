@@ -22,7 +22,7 @@ import ReactMarkdown from "react-markdown";
  */
 
 export default function ArticlePage() {
-  const [eachPost, setEachPost] = useState({});
+  const [singlePost, setSinglePost] = useState({});
   const { postId } = useParams();
   const fetchData = async () => {
     try {
@@ -30,7 +30,7 @@ export default function ArticlePage() {
         `https://blog-post-project-api.vercel.app/posts/${postId}`
       );
       console.log(data);
-      setEachPost(data.data);
+      setSinglePost(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -42,32 +42,34 @@ export default function ArticlePage() {
   return (
     <>
       <Navebar />
-      <main className="main-container flex flex-col justify-center items-center mb-10 lg:my-10 ">
+      <main className="main-container flex flex-col justify-center items-center mb-10 lg:my-10 px-28 pb-28 pt-14">
         <img
-          src={eachPost.image}
+          src={singlePost.image}
           alt=""
-          className="rounded-2xl w-[75rem] h-[36rem] object-cover"
+          className="rounded-2xl w-full h-[36rem] object-cover"
         />
-        <div className="article-container w-full mb-10 lg:flex lg:w-4/6">
-          <div className="article-box flex flex-col justify-center px-4 items-start w-full lg:w-[75rem]">
+        <div className="article-container w-full mb-10 lg:flex lg:flex-row lg:justify-between">
+          <div className="article-box flex flex-col justify-center px-4 items-start">
             <div className="title-container flex flex-col gap-7 my-6">
               <div className="category-date-row flex flex-row gap-7">
                 <div className="category text-[#12B279] py-1 px-3 rounded-full bg-[#D7F2E9]">
-                  {eachPost.category}
+                  {singlePost.category}
                 </div>
                 <div className="date-time font-medium text-base text-[#75716B] py-1 px-3">
-                  {new Date(eachPost.date).toLocaleDateString("en-GB", {
+                  {new Date(singlePost.date).toLocaleDateString("en-GB", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
                   })}
                 </div>
               </div>
-              <h3 className="title font-semibold text-2xl">{eachPost.title}</h3>
+              <h3 className="title font-semibold text-2xl">
+                {singlePost.title}
+              </h3>
             </div>
-            <div className="content w-2/6">
+            <div className="content w-full ">
               <div className="markdown">
-                <ReactMarkdown>{eachPost.content}</ReactMarkdown>
+                <ReactMarkdown>{singlePost.content}</ReactMarkdown>
               </div>
             </div>
           </div>
@@ -77,18 +79,18 @@ export default function ArticlePage() {
               <img
                 src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
                 alt=""
-                className="author-image w-11 h-11 rounded-full" /**แก้ */
+                className="author-image w-11 h-11 rounded-full"
               />
               <div className="author-name">
                 <h3 className="text-[#75716B] font-medium text-xs">Author</h3>
                 <h2 className="text-[#43403B] font-semibold text-xl">
-                  {eachPost.author}
+                  {singlePost.author}
                 </h2>
               </div>
             </div>
             <hr />
             <p className="text-[#75716B] font-medium text-base">
-              {eachPost.description}
+              {singlePost.description}
             </p>
           </div>
           <div className="author-section-sm bg-[#EFEEEB] flex flex-col mt-6 mx-4 rounded-2xl p-6 gap-3 lg:hidden">
@@ -101,17 +103,19 @@ export default function ArticlePage() {
               <div className="author-name">
                 <h3 className="text-[#75716B] font-medium text-xs">Author</h3>
                 <h2 className="text-[#43403B] font-semibold text-xl">
-                  {eachPost.author}
+                  {singlePost.author}
                 </h2>
               </div>
             </div>
             <hr />
             <p className="text-[#75716B] font-medium text-base">
-              {eachPost.description}
+              {singlePost.description}
             </p>
           </div>
         </div>
-        <CommentSection likeCount={eachPost.likes} />
+        <div className="flex flex-col ">
+          <CommentSection likeCount={singlePost.likes} />
+        </div>
       </main>
       <Footer />
     </>

@@ -8,16 +8,20 @@ import { HappyIcon, CopyIcon } from "../icon/IconCollection";
 
 export default function CommentSection({ likeCount }) {
   return (
-    <>
-      <div className="like-container flex flex-col justify-center items-center h-40 gap-6 w-full bg-[#EFEEEB]">
-        <butoon className="like-button border bg-white h-12 w-80 rounded-full flex flex-row justify-center items-center gap-1 font-medium text-base cursor-pointer">
+    <div className="CommentSection-container flex flex-col lg:w-3/6">
+      {/**Like และโซเชี่ยล */}
+      <div
+        className="like-container flex flex-col justify-center items-center h-40 gap-6 w-full bg-[#EFEEEB] 
+      lg:flex-row lg:justify-between lg:rounded-2xl lg:px-6 lg:py-4
+      ">
+        <butoon className="like-button border bg-white h-12 w-80 lg:w-36 rounded-full flex flex-row justify-center items-center gap-1 font-medium text-base cursor-pointer">
           <span>
             <HappyIcon />
           </span>
           {likeCount}
         </butoon>
         <div className="icon-container flex flex-row gap-2 justify-center items-center">
-          <button className="copy-button border rounded-full bg-white h-12 py-3 px-7 font-medium text-base flex items-center gap-1 text-[#26231E]">
+          <button className="copy-button border rounded-full bg-white h-12 py-3 px-7 font-medium text-base flex items-center gap-1 text-[#26231E] lg:w-48">
             <span>
               <CopyIcon />
             </span>
@@ -48,7 +52,7 @@ export default function CommentSection({ likeCount }) {
             name="comment"
             id="comment"
             placeholder="What are your thoughts?"
-            className="border rounded-lg h-28 w-96 pt-3 pb-1 pr-1 pl-4"></textarea>
+            className="border rounded-lg h-28 w-96 lg:w-full pt-3 pb-1 pr-1 pl-4"></textarea>
           <button className="p-2 pr-10 pl-10 h-12 w-28 rounded-full bg-black text-white font-medium text-base mt-2">
             Send
           </button>
@@ -78,6 +82,6 @@ export default function CommentSection({ likeCount }) {
           <hr />
         </div>
       </div>
-    </>
+    </div>
   );
 }
