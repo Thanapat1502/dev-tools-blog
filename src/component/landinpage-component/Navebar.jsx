@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Turn as Hamburger } from "hamburger-react";
 import { useNavigate } from "react-router-dom";
-import SignIn from "@/Pagese/SignIn";
 
 function HambergerMenu({ navLogin, navSignIn }) {
   const [isOpen, setOpen] = useState(false);
@@ -55,11 +54,15 @@ function Navebar() {
     navigate(`/login`);
   };
 
+  const navHome = () => {
+    navigate(`/`);
+  };
+
   return (
     <nav className="flex justify-between border-b pt-3 pb-3">
-      <a className="logo text-2xl font-bold ml-6">
+      <button onClick={navHome} className="logo text-2xl font-bold ml-6">
         hh<span className="text-green-500">.</span>
-      </a>
+      </button>
       <div className="hamberger-container lg:hidden">
         <HambergerMenu navLogin={navLogin} navSignIn={navSignIn} />
       </div>
