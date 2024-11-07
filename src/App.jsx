@@ -7,6 +7,7 @@ import Home from "./Pagese/Home";
 import SignIn from "./Pagese/SignIn";
 import LoginPage from "./Pagese/Login";
 import ArticlePage from "./Pagese/ArticlePage";
+import AdminPage from "./Pagese/AdminPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<SignIn />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/post/:postId" element={<ArticlePage />} />
+        <Route path="/admin/profile" element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
   );
