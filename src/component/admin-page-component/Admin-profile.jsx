@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "../general-components/button";
-import { handler } from "tailwindcss-animate";
 
 export default function AdminProfile() {
   const [nameInput, setNameInput] = useState("Thompson P.");
