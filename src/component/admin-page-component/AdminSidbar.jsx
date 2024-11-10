@@ -1,4 +1,3 @@
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import {
   NotebookIcon,
   UserIcon,
@@ -19,8 +18,38 @@ export default function AdminSidebar() {
           <h4 className="font-semibold text-xl text-[#F2B68C]">Admin panel</h4>
         </div>
 
-        <div className="sidebar-body bg-[#EFEEEB]">
-          <Sidebar>
+        <div className="sidebar bg-[#EFEEEB]">
+          <button
+            onClick="*"
+            className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
+            <NotebookIcon />
+            Article management
+          </button>
+          <button
+            onClick="*"
+            className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
+            <FileIcon prop="แก้ด้วย" />
+            Category management
+          </button>
+          <button
+            onClick="*"
+            className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
+            <UserIcon /> Profile
+          </button>
+          <button
+            onClick="*"
+            className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
+            <BellIcon />
+            Notification
+          </button>
+          <button
+            onClick="*"
+            className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
+            <BellIcon />
+            Reset password
+          </button>
+
+          {/* <Sidebar>
             <Menu>
               <MenuItem>
                 <div className="menu-item flex flex-row gap-3 font-medium text-base text-[#75716B]">
@@ -51,20 +80,20 @@ export default function AdminSidebar() {
                 </div>
               </MenuItem>
             </Menu>
-          </Sidebar>
+          </Sidebar> */}
         </div>
       </div>
 
       <div className="footer-button mb-4">
         <div className="homepage-navigetion">
-          <button className="flex gap-3 h-16 w-full text-start px-6 py-5 font-medium text-base text-[#75716B]">
+          <button className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
             <NavOutIcon />
             <span>hh.wbsite</span>
           </button>
         </div>
         <hr />
         <div className="log-out flex">
-          <button className="flex gap-3 h-16 w-full text-start px-6 py-5 font-medium text-base text-[#75716B]">
+          <button className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
             <LogOutIcon />
             <span>Log out</span>
           </button>
@@ -73,14 +102,3 @@ export default function AdminSidebar() {
     </div>
   );
 }
-
-// <Sidebar>
-//   <Menu>
-//     <SubMenu label="Charts">
-//       <MenuItem> Pie charts </MenuItem>
-//       <MenuItem> Line charts </MenuItem>
-//     </SubMenu>
-//     <MenuItem> Documentation </MenuItem>
-//     <MenuItem> Calendar </MenuItem>
-//   </Menu>
-// </Sidebar>
