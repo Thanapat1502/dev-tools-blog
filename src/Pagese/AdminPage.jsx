@@ -1,6 +1,7 @@
 import AdminSidebar from "@/component/admin-page-component/AdminSidbar";
 import AdminProfile from "@/component/admin-page-component/Admin-profile";
 import CategoryMenagement from "@/component/admin-page-component/Category-management";
+import ArticleMenagement from "@/component/admin-page-component/Article-management";
 import { useState } from "react";
 
 /**
@@ -46,8 +47,9 @@ export default function AdminPage() {
         toggleResetPassword={toggleResetPassword}
       />
       <div className="main w-full">
-        <AdminProfile />
+        {/* <AdminProfile /> */}
         {/* <CategoryMenagement /> */}
+        <ArticleMenagement />
       </div>
     </div>
   );
