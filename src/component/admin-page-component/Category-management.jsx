@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function CategoryMenagement() {
   const categories = ["Cat", "General", "Inspiration"]; //แก้เป็นดึงข้อมูลจาก database ทีหัง
   return (
-    <div className="body w-full bg-[#F9F8F6] pb-20 px-16 ">
+    <div className="body w-full h-screen bg-[#F9F8F6] pb-20 px-16 ">
       <div className="category-header flex justify-between items-center py-6">
         <h3 className="font-semibold text-2xl text-[#26231E]">
           Category management

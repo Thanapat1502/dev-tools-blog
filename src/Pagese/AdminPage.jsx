@@ -2,13 +2,17 @@ import AdminSidebar from "@/component/admin-page-component/AdminSidbar";
 import AdminProfile from "@/component/admin-page-component/Admin-profile";
 import CategoryMenagement from "@/component/admin-page-component/Category-management";
 import ArticleMenagement from "@/component/admin-page-component/Article-management";
+import Notification from "@/component/admin-page-component/Notification";
+import ResetPassword from "@/component/admin-page-component/Reset-password";
 import { useState } from "react";
 
 /**
  * todo-------------------------------------------------------
- * แก้ sidebar 100%
- * เพิ่มหน้า blog menagement
- * เพิ่มหน้า catelog menagement 40% เพิ่มฟังก์ชั่นให้ปุ่มเพิ่ม แก้ ลบ
+ * แก้ sidebar 90% รอเติมปุ่ม
+ * หน้า blog menagement 10% ดึงข้อมูล + map + ทำแถบ search
+ * หน้า catelog menagement 40% เพิ่มฟังก์ชั่นให้ปุ่มเพิ่ม แก้ ลบ
+ * เพิ่มหน้า Notification
+ * เพิ่มหน้า Reset Password
  * refactor เป็น fetch ข้อมูลจาก database
  */
 //---------------------------------------
@@ -47,9 +51,11 @@ export default function AdminPage() {
         toggleResetPassword={toggleResetPassword}
       />
       <div className="main w-full">
-        {/* <AdminProfile /> */}
+        <AdminProfile />
         {/* <CategoryMenagement /> */}
-        <ArticleMenagement />
+        {/* <ArticleMenagement /> */}
+        {/* <Notification /> */}
+        {/* <ResetPassword /> */}
       </div>
     </div>
   );

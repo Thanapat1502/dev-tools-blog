@@ -2,7 +2,7 @@ import { Button } from "../general-components/button";
 import { EditIcon, TrashIcon } from "../icon/IconCollection";
 export default function ArticleMenagement() {
   return (
-    <div className="body w-full bg-[#F9F8F6] pb-20 px-16 ">
+    <div className="body w-full h-screen bg-[#F9F8F6] pb-20 px-16 ">
       <div className="category-header flex justify-between items-center py-6">
         <h3 className="font-semibold text-2xl text-[#26231E]">
           Article management

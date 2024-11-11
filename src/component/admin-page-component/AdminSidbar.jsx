@@ -9,7 +9,7 @@ import {
 
 export default function AdminSidebar() {
   return (
-    <div className="side-section-container w-72 bg-[#EFEEEB] flex flex-col justify-between">
+    <div className="side-section-container w-72 h-screen bg-[#EFEEEB] flex flex-col justify-between">
       <div className="between-container">
         <div className="sidbar-header flex flex-col justify-center w-full h-52 py-16 px-6">
           <h1 className="web-logo font-semibold text-6xl">
