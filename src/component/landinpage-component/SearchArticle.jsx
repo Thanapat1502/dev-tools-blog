@@ -19,14 +19,13 @@ function SearchArticle() {
   const handleSearchInput = (event) => {
     setSearchInput(event.target.value);
   };
-  
+
   const handleSearchButton = () => {
     setKeyword(searchInput);
   };
 
   const handleCategoryButton = (event) => {
     setCategory(event.target.value.toLowerCase());
-    console.log(catagory);
   };
 
   const handleSelector = (event) => {

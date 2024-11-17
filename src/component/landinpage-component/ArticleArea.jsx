@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -14,9 +13,10 @@ export default function ArticleArea(props) {
    * effect ดึงข้อมูลจาก url มายัด state
    * state เรียก state ที่เก็บอารเย์ไว้ออกมา
    */
-  const [blogs, setBlogs] = useState([]);
-  const [postLimit, setPostlimit] = useState(6);
-  const [isLoading, setIsLoading] = useState(false);
+  const [blogs, setBlogs] = useState([]); //ดึงข้อมูลจาก sever
+  const [postLimit, setPostlimit] = useState(6); //ตั้งค่า limit สำหรับ ปุ่ม view
+  const [isLoading, setIsLoading] = useState(false); //ตั้งค่าว่ากำลังโหลดข้อมูลหรือไม่
+  const [isViewmore, setIsViewMore] = useState(true); //ตั้งค่าว่าปุ่ม view more จะหายไปหรือไม่
   const navigate = useNavigate();
 
   const handleViewPost = (postId) => {
@@ -25,7 +25,6 @@ export default function ArticleArea(props) {
 
   const handleViewMore = () => {
     setPostlimit(postLimit + 6);
-    console.log(postLimit);
   };
 
   const toggleLoading = (onOff) => {
@@ -40,14 +39,16 @@ export default function ArticleArea(props) {
     ) {
       try {
         toggleLoading(true);
-        console.log("start: " + isLoading);
 
         const data = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?category=${props.category}&limit=${postLimit}&keyword=${props.keyword}`
         );
+
         setBlogs(data.data.posts);
+        if (data.data.totalPages === data.data.currentPage) {
+          setIsViewMore(false);
+        }
         toggleLoading(false);
-        console.log("end: " + isLoading);
       } catch (error) {
         console.log(error);
       }
@@ -57,8 +58,12 @@ export default function ArticleArea(props) {
         const data = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?&limit=${postLimit}`
         );
+
         setBlogs(data.data.posts);
         toggleLoading(false);
+        if (data.data.totalPages === data.data.currentPage) {
+          setIsViewMore(false);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -77,64 +82,72 @@ export default function ArticleArea(props) {
             <ReactLoading type="spokes" color="#000000" />
             <h1>Loading...</h1>
           </div>
-        ) : (
-          <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
-            {blogs.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="card-container flex flex-col justify-center w-96 h-[27rem] mt-1 mb-1 px-2 py-2 lg:w-[37rem] lg:h-[36rem]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
+        ) : null}
+
+        <div className="gride-area flex flex-col justify-center items-center px-4 pt-6 pb-20 gap-12 lg:grid lg:grid-cols-2">
+          {blogs.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="card-container flex flex-col justify-center w-96 h-[27rem] mt-1 mb-1 px-2 py-2 lg:w-[37rem] lg:h-[36rem]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  onClick={() => {
+                    handleViewPost(item.id);
+                  }}
+                  className="rounded-2xl w-80 h-52 object-cover lg:w-[37rem] lg:h-96 cursor-pointer"
+                />
+                <div className="category rounded-full bg-[#D7F2E9] text-[#12B279] font-medium text-sm text-center px-3 py-1 w-fit mt-4 mb-2">
+                  {item.category}
+                </div>
+                <div className="text-area w-80 h-36 flex flex-col gap-2 lg:w-[37rem]">
+                  <h4
                     onClick={() => {
                       handleViewPost(item.id);
                     }}
-                    className="rounded-2xl w-80 h-52 object-cover lg:w-[37rem] lg:h-96 cursor-pointer"
-                  />
-                  <div className="category rounded-full bg-[#D7F2E9] text-[#12B279] font-medium text-sm text-center px-3 py-1 w-fit mt-4 mb-2">
-                    {item.category}
-                  </div>
-                  <div className="text-area w-80 h-36 flex flex-col gap-2 lg:w-[37rem]">
-                    <h4
-                      onClick={() => {
-                        handleViewPost(item.id);
-                      }}
-                      className="title font-semibold text-xl text-[#26231E] cursor-pointer">
-                      {item.title}
-                    </h4>
-                    <p className="description font-medium text-sm text-[#75716B]">
-                      {item.description}
-                    </p>
-                  </div>
+                    className="title font-semibold text-xl text-[#26231E] cursor-pointer">
+                    {item.title}
+                  </h4>
+                  <p className="description font-medium text-sm text-[#75716B]">
+                    {item.description}
+                  </p>
+                </div>
 
-                  <div className="author-and-date flex flex-row gap-8 mt-4 mb-4 ">
-                    <div className="author flex gap-1">
-                      <img
-                        src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
-                        alt="author-picture"
-                        className="w-6 h-6 rounded-full"
-                      />
-                      {item.author}
-                    </div>
-                    <div key={index} className="date">
-                      {new Date(item.date).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </div>
+                <div className="author-and-date flex flex-row gap-8 mt-4 mb-4 ">
+                  <div className="author flex gap-1">
+                    <img
+                      src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
+                      alt="author-picture"
+                      className="w-6 h-6 rounded-full"
+                    />
+                    {item.author}
+                  </div>
+                  <div key={index} className="date">
+                    {new Date(item.date).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
+        </div>
+        {isLoading ? (
+          <div className="loading-screen flex flex-col justify-center items-center my-14">
+            <ReactLoading type="spokes" color="#000000" />
+            <h1>Loading...</h1>
           </div>
-        )}
-        <button
-          className="underline font-medium text-base mb-32"
-          onClick={handleViewMore}>
-          View more
-        </button>
+        ) : null}
+        {isViewmore ? (
+          <button
+            className="underline font-medium text-base mb-32"
+            onClick={handleViewMore}>
+            View more
+          </button>
+        ) : null}
       </article>
     </>
   );
