@@ -51,9 +51,9 @@ export default function AdminPage() {
         toggleResetPassword={toggleResetPassword}
       />
       <div className="main w-full">
-        <AdminProfile />
+        {/* <AdminProfile /> */}
         {/* <CategoryMenagement /> */}
-        {/* <ArticleMenagement /> */}
+        <ArticleMenagement />
         {/* <Notification /> */}
         {/* <ResetPassword /> */}
       </div>

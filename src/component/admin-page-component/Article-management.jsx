@@ -1,5 +1,7 @@
 import { Button } from "../general-components/button";
 import { EditIcon, TrashIcon } from "../icon/IconCollection";
+import { SelectCategory, SelectStatus } from "./SelectButtons";
+
 export default function ArticleMenagement() {
   return (
     <div className="body w-full h-screen bg-[#F9F8F6] pb-20 px-16 ">
@@ -17,13 +19,18 @@ export default function ArticleMenagement() {
 
       <div className="main-container flex flex-col gap-4">
         {/**เพิ่ม search bar */}
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-96 h-12 py-3 pr-3 pl-4 rounded-lg border border-[#DAD6D1]"
-          />
-          Status Category
+        <div className="search-section flex flex-row justify-between">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-96 h-12 py-3 pr-3 pl-4 rounded-lg border border-[#DAD6D1]"
+            />
+          </div>
+          <div className="select-section flex gap-4">
+            <SelectStatus />
+            <SelectCategory />
+          </div>
         </div>
 
         <div className=" flex flex-row justify-between items-center">
