@@ -7,7 +7,11 @@ import Home from "./Pagese/Home";
 import SignIn from "./Pagese/SignIn";
 import LoginPage from "./Pagese/Login";
 import ArticlePage from "./Pagese/ArticlePage";
-import AdminPage from "./Pagese/AdminPage";
+import AdminArticleMenagement from "./Pagese/Admin/AdminArticleMenagement";
+import AdminProfilePage from "./Pagese/Admin/AdminProfilePage";
+import AdminCategoryMenagement from "./Pagese/Admin/AdminCategoryMenagement";
+import AdminNotification from "./Pagese/Admin/AdminNotification";
+import AdminResetPassword from "./Pagese/Admin/AdminResetPassword";
 
 function App() {
   return (
@@ -17,7 +21,18 @@ function App() {
         <Route path="/register" element={<SignIn />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/post/:postId" element={<ArticlePage />} />
-        <Route path="/admin/profile" element={<AdminPage />} />
+        {/**For admin */}
+        <Route path="/admin/profile" element={<AdminProfilePage />} />
+        <Route
+          path="/admin/article-menage"
+          element={<AdminArticleMenagement />}
+        />
+        <Route
+          path="/admin/category-menage"
+          element={<AdminCategoryMenagement />}
+        />
+        <Route path="/admin/notification" element={<AdminNotification />} />
+        <Route path="/admin/reset-password" element={<AdminResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

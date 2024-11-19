@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   NotebookIcon,
   UserIcon,
@@ -8,6 +9,27 @@ import {
 } from "../icon/IconCollection";
 
 export default function AdminSidebar() {
+  const navigate = useNavigate();
+
+  const toggleArticleMenagement = () => {
+    console.log("AM can click");
+    navigate("/admin/article-menage");
+  };
+  const toggleCategoryMenagement = () => {
+    console.log("CM can click");
+    navigate("/admin/category-menage");
+  };
+  const toggleProfile = () => {
+    console.log("AP can click");
+    navigate("/admin/profile");
+  };
+  const toggleNotification = () => {
+    navigate("/admin/notification");
+  };
+  const toggleResetPassword = () => {
+    navigate("/admin/reset-password");
+  };
+  //-
   return (
     <div className="side-section-container w-72 h-screen bg-[#EFEEEB] flex flex-col justify-between">
       <div className="between-container">
@@ -20,30 +42,30 @@ export default function AdminSidebar() {
 
         <div className="sidebar bg-[#EFEEEB]">
           <button
-            onClick="*"
+            onClick={toggleArticleMenagement}
             className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
             <NotebookIcon />
             Article management
           </button>
           <button
-            onClick="*"
+            onClick={toggleCategoryMenagement}
             className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
-            <FileIcon prop="แก้ด้วย" />
+            <FileIcon />
             Category management
           </button>
           <button
-            onClick="*"
+            onClick={toggleProfile}
             className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
             <UserIcon /> Profile
           </button>
           <button
-            onClick="*"
+            onClick={toggleNotification}
             className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
             <BellIcon />
             Notification
           </button>
           <button
-            onClick="*"
+            onClick={toggleResetPassword}
             className="menu-item flex flex-row gap-3 items-center px-6 py-4 w-72 h-16 font-medium text-base text-[#75716B] hover:bg-[#DAD6D1]">
             <BellIcon />
             Reset password
