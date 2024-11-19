@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import { useState, useEffect } from "react";
