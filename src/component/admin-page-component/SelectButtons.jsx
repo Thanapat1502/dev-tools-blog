@@ -6,30 +6,51 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function SelectCategory() {
+/**
+ *
+ * @param {*SelectItem}
+ * แก้ให้เป็น map จาก fetch
+ * รอแก้หลังเปลี่ยนเป็น Cloud DB
+ * @returns
+ */
+export function SelectCategory({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}) {
+  const array = [1, 2, 3, 4];
+  console.log(categories);
   return (
-    <Select>
+    <Select
+      value={selectedCategory}
+      onValueChange={(value) => setSelectedCategory(value)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="general">General</SelectItem>
-        <SelectItem value="cat">Cat</SelectItem>
-        <SelectItem value="inspiration">Inspiration</SelectItem>
+        {categories.map((cate, index) => {
+          return (
+            <SelectItem key={index} value={cate}>
+              {cate}
+            </SelectItem>
+          );
+        })}
       </SelectContent>
     </Select>
   );
 }
 
-export function SelectStatus() {
+export function SelectStatus({ selectedStatus, setSelectedStatus }) {
   return (
-    <Select>
+    <Select
+      value={selectedStatus}
+      onValueChange={(value) => setSelectedStatus(value)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Status" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="published">Published</SelectItem>
-        <SelectItem value="drafted">Drafted</SelectItem>
+        <SelectItem>Published</SelectItem>
+        <SelectItem>Draft</SelectItem>
       </SelectContent>
     </Select>
   );

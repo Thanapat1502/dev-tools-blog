@@ -12,6 +12,13 @@ import AdminProfilePage from "./Pagese/Admin/AdminProfilePage";
 import AdminCategoryMenagement from "./Pagese/Admin/AdminCategoryMenagement";
 import AdminNotification from "./Pagese/Admin/AdminNotification";
 import AdminResetPassword from "./Pagese/Admin/AdminResetPassword";
+import AdminCreateArticle from "./Pagese/Admin/AdminCreateArticle";
+import AdminEditArticle from "./Pagese/Admin/AdminEditArticle";
+
+//todo
+//authentication for admin
+//fetch data for create and edit
+//delete axios
 
 function App() {
   return (
@@ -21,11 +28,20 @@ function App() {
         <Route path="/register" element={<SignIn />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/post/:postId" element={<ArticlePage />} />
-        {/**For admin */}
+
+        {/**For admin************************************************************/}
         <Route path="/admin/profile" element={<AdminProfilePage />} />
         <Route
           path="/admin/article-menage"
           element={<AdminArticleMenagement />}
+        />
+        <Route
+          path="/admin/article-menage/create"
+          element={<AdminCreateArticle />}
+        />
+        <Route
+          path="/admin/article-menage/edit/:postId"
+          element={<AdminEditArticle />}
         />
         <Route
           path="/admin/category-menage"
