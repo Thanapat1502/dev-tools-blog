@@ -7,6 +7,10 @@ import Home from "./Pagese/Home";
 import SignIn from "./Pagese/SignIn";
 import LoginPage from "./Pagese/Login";
 import ArticlePage from "./Pagese/ArticlePage";
+//----For User------------------
+import UserProfile from "./Pagese/User/UserProfilePage";
+import UserResetPassword from "./Pagese/User/UserResetPassword";
+//----For Admin------------------
 import AdminArticleMenagement from "./Pagese/Admin/AdminArticleMenagement";
 import AdminProfilePage from "./Pagese/Admin/AdminProfilePage";
 import AdminCategoryMenagement from "./Pagese/Admin/AdminCategoryMenagement";
@@ -28,6 +32,9 @@ function App() {
         <Route path="/register" element={<SignIn />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/post/:postId" element={<ArticlePage />} />
+        {/**For user */}
+        <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/reset-password" element={<UserResetPassword />} />
 
         {/**For admin************************************************************/}
         <Route path="/admin/profile" element={<AdminProfilePage />} />
