@@ -12,15 +12,12 @@ export default function AdminSidebar() {
   const navigate = useNavigate();
 
   const toggleArticleMenagement = () => {
-    console.log("AM can click");
     navigate("/admin/article-menage");
   };
   const toggleCategoryMenagement = () => {
-    console.log("CM can click");
     navigate("/admin/category-menage");
   };
   const toggleProfile = () => {
-    console.log("AP can click");
     navigate("/admin/profile");
   };
   const toggleNotification = () => {
