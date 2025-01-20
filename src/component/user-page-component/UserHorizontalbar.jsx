@@ -20,14 +20,14 @@ export function UserHorizontalbar() {
 export function UserSidebar() {
   return (
     <>
-      <div className="horizonatal-bar flex flex-col ">
-        <button className="menu-item flex flex-row gap-3 w-48 py-3 px-4 items-center">
+      <div className="horizonatal-bar flex flex-col">
+        <button className="menu-item flex flex-row gap-3 w-48 py-3 px-4 items-center text-start">
           <UserIcon />
-          Profile
+          <span>Profile</span>
         </button>
-        <button className="menu-item flex flex-row gap-3 w-48 py-3 px-4 items-center">
+        <button className="menu-item flex flex-row gap-3 w-48 py-3 px-4 items-center text-start">
           <RefreshIcon />
-          Reset Password
+          <span>Reset Password</span>
         </button>
       </div>
     </>
