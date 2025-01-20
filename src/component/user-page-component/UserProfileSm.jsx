@@ -1,5 +1,5 @@
 import Navebar from "../landinpage-component/Navebar";
-import UserHorizontalbar from "./UserHorizontalbar";
+import { UserHorizontalbar } from "./UserHorizontalbar";
 import { Button } from "../general-components/button";
 import { UserAlert } from "./UserAlert";
 

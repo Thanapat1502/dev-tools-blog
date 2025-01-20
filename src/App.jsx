@@ -9,7 +9,7 @@ import LoginPage from "./Pagese/Login";
 import ArticlePage from "./Pagese/ArticlePage";
 //----For User------------------
 import UserProfile from "./Pagese/User/UserProfilePage";
-import UserResetPassword from "./Pagese/User/UserResetPassword";
+import UserResetPasswordPage from "./Pagese/User/UserResetPasswordPage";
 //----For Admin------------------
 import AdminArticleMenagement from "./Pagese/Admin/AdminArticleMenagement";
 import AdminProfilePage from "./Pagese/Admin/AdminProfilePage";
@@ -19,10 +19,9 @@ import AdminResetPassword from "./Pagese/Admin/AdminResetPassword";
 import AdminCreateArticle from "./Pagese/Admin/AdminCreateArticle";
 import AdminEditArticle from "./Pagese/Admin/AdminEditArticle";
 
-//todo
-//authentication for admin
-//fetch data for create and edit
-//delete axios
+//TODO authentication for admin
+//TODO fetch data for create and edit API for admin
+//TODO delete axios for admin
 
 function App() {
   return (
@@ -32,10 +31,12 @@ function App() {
         <Route path="/register" element={<SignIn />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/post/:postId" element={<ArticlePage />} />
-        {/**For user */}
+        {/**For user ***********************************************************/}
         <Route path="/user/profile" element={<UserProfile />} />
-        <Route path="/user/reset-password" element={<UserResetPassword />} />
-
+        <Route
+          path="/user/reset-password"
+          element={<UserResetPasswordPage />}
+        />
         {/**For admin************************************************************/}
         <Route path="/admin/profile" element={<AdminProfilePage />} />
         <Route
