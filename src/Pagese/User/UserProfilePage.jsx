@@ -8,6 +8,7 @@ export default function UserProfile() {
   //state isSave: active after save button activated and render green-box
   //pre-fill the input
   //axios post to change user data
+  //fix userprofile for Lg
   return (
     <>
       <div className="block lg:hidden">
