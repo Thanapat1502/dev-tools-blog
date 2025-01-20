@@ -9,10 +9,10 @@ export default function UserProfileSm() {
       <Navebar />
       <UserHorizontalbar />
       <div className="main-container relative ">
-        <div className="profile-header flex flex-row gap-3 justify-center items-center">
+        <div className="profile-header flex flex-row gap-3 justify-center items-center bg-[#F9F8F6]">
           <div className="profile-element flex flex-row justify-center items-center">
             <img
-              src="https://s3-alpha-sig.figma.com/img/c5de/1115/2ae7bdfe791abb765a42c02fcba58510?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZTRv~TqUDJDKZRHGhheBgP-yNu2tErOngK-xBTj9-qakyEOtj2eY7XzRGkhQ473ffvdoH72y4atrWG3RXV2P2g1CZiDf2PbE9eG6yUApfxU3BNWEzygsnNWOKxK7cBzulR6-d44QTbSSJ1fZMujVLTm1RngRMyAy0NBHl06qEPmhQQxCuE8PUpALQcBZVnid4n31bxq99ZNjxcIbpSXn5NuECkQRM6MffC2jXZZ0tneD33Gn6Nv6x-Ch3aQQMsfORmCQoCXvIccgJYrb178rZ9~GnhnyS5yVFCsnoFPUIRBtCReYcLO7Vo3mPzNVLhP6IEtH9V-JSIygtFwt9GL6kw__"
+              src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa6rBpqgiLsh8iZREh2UsP5iLS3j3nr8i0U0a3jUb1Spi4ltheo6O.webp"
               alt="profile-avatar"
               className="w-10 h-10 rounded-full object-cover"
             />
@@ -23,10 +23,10 @@ export default function UserProfileSm() {
           <h4 className="font-semibold text-xl"> Profile </h4>
         </div>
         <div className="profile-management-container bg-[#EFEEEB] ">
-          <form action="" className="mx-4">
-            <div className="for-image border-b flex flex-col justify-center items-center gap-6 pt-6">
+          <form className="mx-4">
+            <div className="for-image border-b flex flex-col justify-center items-center gap-6 pt-6 ">
               <img
-                src="https://s3-alpha-sig.figma.com/img/c5de/1115/2ae7bdfe791abb765a42c02fcba58510?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZTRv~TqUDJDKZRHGhheBgP-yNu2tErOngK-xBTj9-qakyEOtj2eY7XzRGkhQ473ffvdoH72y4atrWG3RXV2P2g1CZiDf2PbE9eG6yUApfxU3BNWEzygsnNWOKxK7cBzulR6-d44QTbSSJ1fZMujVLTm1RngRMyAy0NBHl06qEPmhQQxCuE8PUpALQcBZVnid4n31bxq99ZNjxcIbpSXn5NuECkQRM6MffC2jXZZ0tneD33Gn6Nv6x-Ch3aQQMsfORmCQoCXvIccgJYrb178rZ9~GnhnyS5yVFCsnoFPUIRBtCReYcLO7Vo3mPzNVLhP6IEtH9V-JSIygtFwt9GL6kw__"
+                src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa6rBpqgiLsh8iZREh2UsP5iLS3j3nr8i0U0a3jUb1Spi4ltheo6O.webp"
                 alt="profile-avatar"
                 className="w-32 h-32 rounded-full object-cover"
               />
@@ -37,7 +37,7 @@ export default function UserProfileSm() {
                 borderColor="border-black"
               />
             </div>
-            <div className="for-input flex flex-col gap-6 pb-10 mt-6">
+            <div className="for-input flex flex-col gap-6 pb-10 ">
               <div className="name">
                 <label htmlFor="name">Name</label>
                 <input
@@ -77,9 +77,7 @@ export default function UserProfileSm() {
             </div>
           </form>
         </div>
-        <div className="hidden">
-          <UserAlert />
-        </div>
+        {/* <UserAlert /> */}
       </div>
     </>
   );
