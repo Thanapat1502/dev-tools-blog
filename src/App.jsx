@@ -18,7 +18,6 @@ import AdminNotification from "./Pagese/Admin/AdminNotification";
 import AdminResetPassword from "./Pagese/Admin/AdminResetPassword";
 import AdminCreateArticle from "./Pagese/Admin/AdminCreateArticle";
 import AdminEditArticle from "./Pagese/Admin/AdminEditArticle";
-
 //TODO authentication for admin
 //TODO fetch data for create and edit API for admin
 //TODO delete axios for admin
@@ -33,10 +32,7 @@ function App() {
         <Route path="/post/:postId" element={<ArticlePage />} />
         {/**For user ***********************************************************/}
         <Route path="/user/profile" element={<UserProfile />} />
-        <Route
-          path="/user/resetpassword"
-          element={<UserResetPasswordPage />}
-        />
+        <Route path="/user/resetpassword" element={<UserResetPasswordPage />} />
         {/**For admin************************************************************/}
         <Route path="/admin/profile" element={<AdminProfilePage />} />
         <Route

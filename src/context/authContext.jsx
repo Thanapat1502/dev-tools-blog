@@ -1,41 +1,22 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authState, setAuthState] = useState({
     userId: null,
-    userEmail: null,
     user: null,
     userRole: null,
     token: null,
   });
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isStaff, setIsStaff] = useState(false);
   const [isAuthLoading, setIsAuthLoading] = useState(false);
 
-  //function to validate role
-  const roleValidation = (userRole) => {
-    if (userRole === "customer") {
-      //console.log("welcom customer");
-      setIsAdmin(false);
-      setIsStaff(false);
-    } else if (userRole === "admin") {
-      //console.log("welcom admin");
-      setIsAdmin(true);
-      setIsStaff(false);
-    } else if (userRole === "staff") {
-      //console.log("welcom staff");
-      setIsStaff(true);
-      setIsAdmin(false);
-    }
-  };
-
   //function to set authstate, set loggedIn
-  const handleSessionLogin = (savedToken, savedUser, userRole) => {
+  const handleSessionLogin = (savedToken, savedUser) => {
     setAuthState({
       userId: savedUser.sub,
       userEmail: savedUser.email,
@@ -43,7 +24,6 @@ export const AuthProvider = ({ children }) => {
       userRole: savedUser.user_metadata.role,
       token: savedToken,
     });
-    roleValidation(userRole);
     setIsLoggedIn(true);
   };
 
@@ -75,7 +55,7 @@ export const AuthProvider = ({ children }) => {
       //store user info as string in local& store token
       localStorage.setItem("user", JSON.stringify(userInfo));
       localStorage.setItem("token", authToken);
-      setCookie("authToken", authToken);
+      //setCookie("authToken", authToken);
       //setauth state to store user / token
       const userRole = userInfo.user_metadata.role;
       handleSessionLogin(authToken, userInfo, userRole);
@@ -94,12 +74,10 @@ export const AuthProvider = ({ children }) => {
     // removeCookie("authToken");
     setAuthState({
       userId: null,
-      userEmail: null,
       user: null,
       userRole: null,
       token: null,
     });
-    setIsAdmin(false);
     setIsLoggedIn(false);
   };
 
@@ -110,11 +88,9 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         isLoggedIn,
-        isAdmin,
-        isStaff,
         isAuthLoading,
       }}>
-      {children}
+      {props.children}
     </AuthContext.Provider>
   );
 };
