@@ -34,7 +34,7 @@ function App() {
         {/**For user ***********************************************************/}
         <Route path="/user/profile" element={<UserProfile />} />
         <Route
-          path="/user/reset-password"
+          path="/user/resetpassword"
           element={<UserResetPasswordPage />}
         />
         {/**For admin************************************************************/}
