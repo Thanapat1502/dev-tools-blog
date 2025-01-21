@@ -26,6 +26,9 @@ export default function AdminSidebar() {
   const toggleResetPassword = () => {
     navigate("/admin/reset-password");
   };
+  const backHome = () => {
+    navigate("/");
+  };
   //-
   return (
     <div className="side-section-container w-72 h-screen bg-[#EFEEEB] flex flex-col justify-between">
@@ -67,8 +70,32 @@ export default function AdminSidebar() {
             <BellIcon />
             Reset password
           </button>
+        </div>
+      </div>
 
-          {/* <Sidebar>
+      <div className="footer-button mb-4">
+        <div className="homepage-navigetion">
+          <button
+            onClick={backHome}
+            className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
+            <NavOutIcon />
+            <span>hh.wbsite</span>
+          </button>
+        </div>
+        <hr />
+        <div className="log-out flex">
+          <button className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
+            <LogOutIcon />
+            <span>Log out</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+{
+  /* <Sidebar>
             <Menu>
               <MenuItem>
                 <div className="menu-item flex flex-row gap-3 font-medium text-base text-[#75716B]">
@@ -99,25 +126,5 @@ export default function AdminSidebar() {
                 </div>
               </MenuItem>
             </Menu>
-          </Sidebar> */}
-        </div>
-      </div>
-
-      <div className="footer-button mb-4">
-        <div className="homepage-navigetion">
-          <button className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
-            <NavOutIcon />
-            <span>hh.wbsite</span>
-          </button>
-        </div>
-        <hr />
-        <div className="log-out flex">
-          <button className=" flex items-center gap-3 h-16 w-full text-start px-6 py-4 font-medium text-base text-[#75716B]">
-            <LogOutIcon />
-            <span>Log out</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+          </Sidebar> */
 }

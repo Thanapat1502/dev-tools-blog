@@ -4,7 +4,6 @@ import { SelectCategory, SelectStatus } from "./SelectButtons";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -90,7 +89,7 @@ export default function ArticleMenagement() {
   }, [searchKeyword, selectedCategory, selectedStatus, posts]); //สำหรับ fetch แบบ condition
 
   return (
-    <div className="body w-full h-screen bg-[#F9F8F6] pb-20 px-16 ">
+    <div className="body w-full h-screen backHome  px-16 ">
       <div className="category-header flex justify-between items-center py-6">
         <h3 className="font-semibold text-2xl text-[#26231E]">
           Article management

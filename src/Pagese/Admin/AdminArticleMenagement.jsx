@@ -4,7 +4,7 @@ export default function AdminArticleMenagement() {
   return (
     <div className="body flex flex-row">
       <AdminSidebar />
-      <div className="main w-full">
+      <div className="main w-full h-screen">
         <ArticleMenagement />
       </div>
     </div>
