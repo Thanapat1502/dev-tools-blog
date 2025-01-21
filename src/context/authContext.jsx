@@ -29,10 +29,10 @@ export const AuthProvider = (props) => {
 
   //check localstorage for token/ if have one, set user state base on token payload
   useEffect(() => {
-    // const savedToken = localStorage.getItem("token");
-    // const savedUser = savedToken
-    //   ? JSON.parse(localStorage.getItem("user") || "{}")
-    //   : null;
+    const savedToken = localStorage.getItem("token");
+    const savedUser = savedToken
+      ? JSON.parse(localStorage.getItem("user") || "{}")
+      : null;
     // if (savedToken && savedUser) {
     //   const userRole = savedUser.user_metadata.role;
     //   handleSessionLogin(savedToken, savedUser, userRole);
