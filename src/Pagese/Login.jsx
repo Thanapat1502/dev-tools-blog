@@ -1,10 +1,32 @@
 import Navebar from "@/component/landinpage-component/Navebar";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/authContext";
+import { useState } from "react";
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { login } = useAuth();
+
   const navigate = useNavigate();
   const navSignIn = () => {
     navigate(`/register`);
   };
+  const handleLogin = () => {
+    const isLoginComplete = login(email, password);
+    if (isLoginComplete === true) {
+      navigate("/");
+    } else {
+      alert("Your email or password is incorrec.");
+    }
+  };
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <>
       <Navebar />
@@ -12,7 +34,7 @@ export default function LoginPage() {
         <div className="Login-body flex flex-col justify-center items-center gap-6 rounded-2xl bg-[#EFEEEB] py-10 px-4 mx-3 h-5/6 mt-10 mb-20">
           <h1 className="font-semibold text-4xl text-[#26231E]">Log in</h1>
           <form
-            action="post"
+            onSubmit={handleLogin}
             className=" flex flex-col justify-center items-center gap-6">
             <div className="flex flex-col">
               <label
@@ -24,6 +46,7 @@ export default function LoginPage() {
                 type="email"
                 name="email"
                 placeholder="Email"
+                onChange={handleEmailInput}
                 className="border py-3 pr-3 pl-4 w-80 h-12 rounded-lg"
               />
             </div>
@@ -38,6 +61,7 @@ export default function LoginPage() {
                 type="password"
                 name="password"
                 placeholder="password"
+                onChange={handlePasswordInput}
                 className="border py-3 pr-3 pl-4 w-80 h-12 rounded-lg"
               />
             </div>

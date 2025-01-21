@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Turn as Hamburger } from "hamburger-react";
 import { useNavigate } from "react-router-dom";
